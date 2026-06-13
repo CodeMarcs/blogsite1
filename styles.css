@@ -124,25 +124,59 @@ a {
   border-right: 1px solid var(--border);
 }
 
-/* Feed page inner content: capped width, centered */
-#feedPage {
+/* ── Shared page inner layout: sticky header full-width, content centered ── */
+/*
+   Every page (feed, explore, notifications, bookmarks, settings) uses this
+   pattern: the .page-header bar spans the full column width while the
+   scrollable content beneath it is capped and centered.
+*/
+
+/* Pages that get a centered content column */
+#feedPage,
+#explorePage,
+#notificationsPage,
+#bookmarksPage {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
+
+/* The sticky header always spans full width */
 #feedPage .page-header,
+#explorePage .page-header,
+#notificationsPage .page-header,
+#bookmarksPage .page-header {
+  width: 100%;
+  align-self: stretch;
+}
+
+
+
+/* Scrollable body content: centered, max 680px */
 #feedPage .compose-area,
-#feedPage #postsContainer {
+#feedPage #postsContainer,
+#explorePage .page-content,
+#notificationsPage #notifList,
+#bookmarksPage #bookmarksList {
   width: 100%;
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
+  align-self: center;
 }
-/* Keep the header sticky bar full-width visually */
-#feedPage .page-header {
-  align-self: stretch;
-  max-width: none;
-  border-bottom: 1px solid var(--border);
+
+/* Explore content wrapper */
+.page-content {
+  padding: 20px;
 }
+.explore-trends-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+/* Feed: keep header inner content also capped so title/tabs align with posts */
 #feedPage .page-header > * {
   max-width: 680px;
   margin-left: auto;
@@ -275,6 +309,7 @@ a {
   font-weight: 500; 
 }
 
+
 .nav-badge {
   margin-left: auto;
   background: var(--accent);
@@ -286,6 +321,8 @@ a {
   min-width: 18px;
   text-align: center;
 }
+
+
 
 /* Compose button */
 .compose-btn {
@@ -575,6 +612,27 @@ a {
 .trend-tag                   { font-size: 14px; font-weight: 600; margin: 1px 0; color: var(--text-primary); }
 .trend-count                 { font-size: 12px; color: var(--text-muted); }
 .trend-item:hover .trend-tag { color: var(--accent); }
+
+/* Explore page — larger trend rows */
+.trend-item--lg       { padding: 14px 20px; }
+.trend-tag--lg        { font-size: 16px; }
+
+/* Notification items */
+.notif-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.notif-item:hover         { background: var(--bg-secondary); }
+.notif-avatar             { width: 40px; height: 40px; font-size: 15px; flex-shrink: 0; }
+.notif-body               { flex: 1; min-width: 0; }
+.notif-name               { font-weight: 600; font-size: 14px; }
+.notif-action             { color: var(--text-secondary); font-size: 14px; }
+.notif-post               { font-size: 13px; color: var(--text-muted); margin-top: 3px; font-style: italic; }
+.notif-time               { font-size: 12px; color: var(--text-muted); flex-shrink: 0; }
 
 .widget-see-all {
   display: block;

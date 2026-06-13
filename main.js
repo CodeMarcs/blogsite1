@@ -480,9 +480,9 @@ function renderExplore() {
     const el = document.getElementById('exploreTrends');
     if (!el) return;
     el.innerHTML = TRENDS.map(t => `
-        <div class="trend-item" style="padding:14px 20px">
+        <div class="trend-item trend-item--lg" onclick="navigate('explore', document.querySelector('.nav-item:nth-child(2)')); setBottomNav('bnExplore')">
         <div class="trend-cat">${t.cat}</div>
-        <div class="trend-tag" style="font-size:16px">${t.tag}</div>
+        <div class="trend-tag trend-tag--lg">${t.tag}</div>
         <div class="trend-count">${t.count}</div>
         </div>`).join('');
 }
@@ -496,17 +496,15 @@ function renderExplore() {
 function renderNotifs() {
     const el = document.getElementById('notifList');
     if (!el) return;
-        el.innerHTML = NOTIFS.map(n => `
-        <div style="display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.12s"
-            onmouseover="this.style.background='var(--bg-secondary)'"
-            onmouseout="this.style.background=''">
-        <div class="avatar" style="width:40px;height:40px;font-size:15px;flex-shrink:0">${n.avatar}</div>
-        <div style="flex:1;min-width:0">
-            <span style="font-weight:600">${n.name}</span>
-            <span style="color:var(--text-secondary)"> ${n.action}</span>
-            ${n.post ? `<div style="font-size:13px;color:var(--text-muted);margin-top:3px;font-style:italic">${n.post}</div>` : ''}
-        </div>
-        <div style="font-size:12px;color:var(--text-muted);flex-shrink:0">${n.time}</div>
+    el.innerHTML = NOTIFS.map(n => `
+        <div class="notif-item">
+            <div class="avatar notif-avatar">${n.avatar}</div>
+            <div class="notif-body">
+                <span class="notif-name">${n.name}</span>
+                <span class="notif-action"> ${n.action}</span>
+                ${n.post ? `<div class="notif-post">${n.post}</div>` : ''}
+            </div>
+            <div class="notif-time">${n.time}</div>
         </div>`).join('');
 }
 
@@ -615,9 +613,9 @@ function setTab(el, key) {
         }
 
     } else if (key === 'trending') {
-        // Navigate to Explore page and highlight it
-        navigate('explore', document.querySelector('.nav-item:nth-child(2)'));
-        setBottomNav('bnExplore');
+        // Show posts sorted by likes descending
+        const sorted = [...posts].sort((a, b) => b.likes - a.likes);
+        container.innerHTML = sorted.map(postHTML).join('');
     }
 }
 

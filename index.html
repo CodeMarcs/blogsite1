@@ -96,10 +96,10 @@
             </button>
         
             <div class="sidebar-profile" onclick="navigate('profile',null)">
-                <div class="avatar">T</div>
+                <div class="avatar">u</div>
                     <div class="profile-info">
-                        <div class="profile-name">test</div>
-                        <div class="profile-handle">@test</div>
+                        <div class="profile-name">user</div>
+                        <div class="profile-handle">@user</div>
                     </div>
             </div>
         </nav>
@@ -126,7 +126,7 @@
                 </div>
         
                 <div class="compose-area" id="composeArea">
-                    <div class="avatar">M</div>
+                    <div class="avatar">u</div>
                         <div class="compose-box">
                             <textarea id="composeText" placeholder="What's on your mind?" rows="2" oninput="updateCharCount()"></textarea>
                         <div class="compose-actions">
@@ -177,8 +177,8 @@
                     <div class="tabs"><div class="tab active">Trending</div><div class="tab">People</div><div class="tab">Topics</div></div>
                 </div>
                 
-                <div style="padding:20px">
-                    <div style="background:var(--bg-secondary);border-radius:12px;overflow:hidden;border:1px solid var(--border)" id="exploreTrends"></div>
+                <div class="page-content">
+                    <div class="explore-trends-card" id="exploreTrends"></div>
                 </div>
             </div>
         
@@ -224,20 +224,20 @@
                 <div class="settings-page">
                     <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;padding:20px;background:var(--bg-secondary);border-radius:14px;border:1px solid var(--border)">
                         <div class="avatar-edit">
-                            <div class="avatar" style="width:72px;height:72px;font-size:24px">M</div>
+                            <div class="avatar" style="width:72px;height:72px;font-size:24px">u</div>
                                 <div class="avatar-edit-overlay"><svg style="width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
                         </div>
 
                         <div>
-                            <div style="font-size:18px;font-weight:600">test</div>
-                            <div style="font-size:13px;color:var(--text-muted)">@test · 1.2k followers</div>
+                            <div style="font-size:18px;font-weight:600">user</div>
+                            <div style="font-size:13px;color:var(--text-muted)">@user · 0 followers</div>
                         </div>
                     </div>
             
                     <div class="settings-section">
                         <div class="settings-section-title">Profile</div>
-                            <input class="settings-input" placeholder="Display name" value="test">
-                            <input class="settings-input" placeholder="Bio" value="test">
+                            <input class="settings-input" placeholder="Display name" value="user">
+                            <input class="settings-input" placeholder="Bio" value="Ako si user">
                             <input class="settings-input" placeholder="Website">
                             <button class="save-btn">Save changes</button>
                     </div>
